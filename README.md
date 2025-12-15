@@ -22,9 +22,11 @@ CREATE DATABASE hostel_management;
 2. Run the SQL schema and seed scripts (from project root):
 ```bash
 # Import schema
-mysql -u root -p hostel_management < "DBMS files/setup.sql"
-# Import seed data
-mysql -u root -p hostel_management < "DBMS files/seed.sql"
+mysql -u root -p hostel_management < "DBMS files/Create_Tables.sql"
+# Import sample data
+mysql -u root -p hostel_management < "DBMS files/Insert_Values.sql"
+# Import Triggers
+mysql -u root -p hostel_management < "DBMS files/Triggers.sql"
 ```
 
 Notes
