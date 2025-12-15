@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Room Change Requests - Warden Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='StudentPage.css') }}"> 
+
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f7ff; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2f4f75; }
+        table { border-collapse: collapse; width: 90%; margin: 20px auto; background: white; }
+        th, td { border: 1px solid #d6d6d6; padding: 12px; text-align: center; }
+        th { background-color: #2f4f75; color: white; }
+        button { padding: 7px 12px; border: none; cursor: pointer; border-radius: 4px; }
+        .approve { background: #0fb60f; color: white; }
+        .reject { background: #d32222; color: white; }
+        .approve:hover { background: #0d8f0d; }
+        .reject:hover { background: #b51d1d; }
+        .back-btn { display: block; width: 100px; margin: 0 auto; text-align: center; padding: 10px; background: #555; color: white; text-decoration: none; border-radius: 5px;}
+    </style>
+</head>
+
+<body>
+
+    <h1>Hostel Room-Change Approval Panel (Warden)</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Current Room</th>
+                <th>Requested Room</th>
+                <th>Reason</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if requests %}
+                {% for req in requests %}
+                <tr>
+                    <td>{{ req.Change_id }}</td>
+                    <td>{{ req.Student_id }}</td>
+                    <td>{{ req.Student_name }}</td>
+                    <td>{{ req.current_room }}</td>
+                    <td>{{ req.new_room }}</td>
+                    <td>{{ req.reason }}</td>
+                    <td>
+                        <form action="{{ url_for('perform_room_change_action') }}" method="post" style="display:inline;">
+                            
+                            <input type="hidden" name="change_id" value="{{ req.Change_id }}">
+                            <input type="hidden" name="student_id" value="{{ req.Student_id }}">
+                            <input type="hidden" name="current_room" value="{{ req.current_room }}">
+                            <input type="hidden" name="new_room" value="{{ req.new_room }}">
+                            <input type="hidden" name="hostel_id" value="{{ req.hostel_id }}">
+
+                            <button name="action" value="approve" class="approve">Approve</button>
+                            <button name="action" value="reject" class="reject">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No pending room change requests.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+    <br>
+    <a href="{{ url_for('warden_home') }}" class="back-btn">Back to Home</a>
+
+</body>
+</html>

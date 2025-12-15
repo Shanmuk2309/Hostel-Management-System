@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Login.css') }}">
+    </head>
+    <body>
+        <h1>Student Login</h1>
+        <form action="/student_login" method="post">
+            <input type="text" id="student_username" name="student_username" placeholder="Username" autocomplete="off" required><br><br>
+            <input type="password" id="student_password" name="student_password" placeholder="Password" autocomplete="off" required><br><br>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            <button class="submit">Login</button>
+            <a class="newuser"href="#" onclick="alert('For new registration, please contact the admin.')">New User? Register Here</a>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Home Page</title>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='StudentPage.css') }}">
+        <style>
+            .status-approved { color: green; font-weight: bold; }
+            .status-rejected { color: red; font-weight: bold; }
+            .status-pending { color: orange; font-weight: bold; }
+            table {
+                border-collapse: collapse;
+                width: 90%;
+                margin: 20px auto;
+                background: white;
+            }
+
+            th, td {
+                border: 1px solid #d6d6d6;
+                padding: 12px;
+                text-align: center;
+            }
+
+            th {
+                background-color: #2f4f75;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <span class = "welcome-text">WELCOME, {{ student.Student_name }}!</span>
+        <div class = "welcome">
+            <div>
+                <p>Name: {{ student.Student_name }}</p>
+                <p>USN: {{ student.Student_id }}</p>
+                <p>PhNo: {{ student.Ph_no }}</p>
+            </div>
+            <p><img>IMAGE</p>
+        </div>
+        <div class = "student-information">
+            <p>Hostel Name: {{ student.Hostel_name }}</p>
+            <p>Room: {{ student.Room_no }}</p>
+            <p>College name: Ramaiah Institute of Technology</p>
+            <p>Branch: {{ student.Branch }}</p>
+        </div>
+        <div class = "utility-buttons">
+            <a href = "{{ url_for('outpass_generation') }}"><button>Outpass Generation</button></a>
+            <a href="{{ url_for('change_room_page') }}"><button>Change Room</button></a>
+        </div>
+        <div class="outpass-history">
+            <h2>My Outpass Requests</h2>
+            
+            <table border="1" cellpadding="10" style="width: 80%; margin: 20px auto; border-collapse: collapse; text-align: center;">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th>ID</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if outpasses %}
+                        {% for item in outpasses %}
+                        <tr>
+                            <td>{{ item.Outpass_id }}</td>
+                            <td>{{ item.from_date }}</td>
+                            <td>{{ item.to_date }}</td>
+                            <td>{{ item.reason }}</td>
+                            
+                            <td class="status-{{ item.status|lower }}">
+                                {{ item.status }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No outpass requests found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="room-change-history">
+            <h2>My Room Change Requests</h2>
+            
+            <table border="1" cellpadding="10" style="width: 80%; margin: 20px auto; border-collapse: collapse; text-align: center;">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th>Request ID</th>
+                        <th>Current Room</th>
+                        <th>Requested Room</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if room_changes %}
+                        {% for req in room_changes %}
+                        <tr>
+                            <td>{{ req.Change_id }}</td>
+                            <td>{{ req.current_room }}</td>
+                            <td>{{ req.new_room }}</td>
+                            <td>{{ req.reason }}</td>
+                            
+                            <td class="status-{{ req.status|lower }}">
+                                {{ req.status }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No room change requests found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

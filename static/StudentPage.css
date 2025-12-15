@@ -1,0 +1,57 @@
+body {
+    margin-left: 30px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+}
+
+.welcome-text {
+    display: block;
+    font-size: 80px;
+    text-align: center;
+    font-family: 'chiller'
+}
+
+.welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    line-height: 40px;
+}
+p {
+    font-size: 20px;
+}
+
+.student-information {
+    border-bottom: 1px solid black;
+    line-height: 40px;
+}
+
+.utility-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+button {
+    margin-right: 20px;
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 10px;
+}
+button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: 0.15s;
+}
+
+button:active {
+    opacity: 0.7;
+    transition: 0.15s;
+}

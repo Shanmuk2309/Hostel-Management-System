@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Registration</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='SignUp.css')}}">
+    </head>
+    <body>
+        <h1>Student Registration Form</h1>
+        <form action="{{ url_for('register_student') }}" method="post" autocomplete="off">
+            <table>
+                <th>Student Details</th>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="select_gender">Gender:</label></td>
+                    <td>
+                        <input list="gender" name="select_gender" id="select_gender">
+                        <datalist id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </datalist>    
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phno">Phone Number:</label></td>
+                    <td><input type="tel" id="phno" name="phno" required></td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr id="sx">
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="4" cols="30" required></textarea></td>
+                </tr>
+                <th>College Details</th>
+                <tr>
+                    <td><label for="college_name">College Name:</label></td>
+                    <td><input type="text" id="college_name" value="Ramaiah Institute of Technology" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="branch">Branch:</label></td>
+                    <td>
+                        <input list="branches" name="branch" id="branch" placeholder="Select your branch" required>
+                        <datalist id="branches">
+                            <option value="CSE">CSE</option>
+                            <option value="ISE">ISE</option>
+                            <option value="AIML">AIML</option>
+                            <option value="CY">CY</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="ME">ME</option>
+                            <option value="CV">CV</option>
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="year_of_study">Year of Study:</label></td>
+                    <td>
+                        <input list="years" name="year_of_study" id="year_of_study" placeholder="Select your year of study" required>
+                        <datalist id="years">
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Student_id">Student ID:</label></td>
+                    <td><input type="text" id="Student_id" name="Student_id" placeholder="Enter your Student ID" required></td>
+                </tr>
+                <tr>
+                    <td><label for="hostel">Hostel:</label></td>
+                    <td>
+                        <input list="hostels" name="hostel" id="hostel" placeholder="Select your hostel" required>
+                        <datalist id="hostels">
+                            <option value="Freshers Block">Freshers Block</option>
+                            <option value="Aryabatta Block">Aryabatta Block</option>
+                            <option value="Ratan Tata Block">Ratan Tata Block</option>
+                            <option value="MSR Gowramma">MSR Gowramma</option>
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="room_no">Room Number:</label></td>
+                    <td><input type="text" id="room_no" name="room_no" placeholder="Enter Room Number" required></td>
+                </tr>
+                <th>Account Details</th>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username" placeholder="Set Username"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="Set Password" required></td>
+                </tr>    
+            </table>
+            <input type="reset">
+            <input type="submit" value="Register">
+        </form>
+    </body>
+</html>

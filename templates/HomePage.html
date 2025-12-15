@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hostel Management System</title>
+        <style>
+            body {
+                background-color: #f0f8ff;
+            }
+            .hms {
+                font-size: 100px;
+                font-weight: bold;
+                font-family: 'chiller';
+                text-align: center;
+                letter-spacing: 5px;
+            }
+            div {
+                text-align: center;
+            }
+            input[type="button"] {
+                width: 200px;
+                height: 75px;
+                font-size: 40px;
+                font-family: 'chiller';
+                margin: 20px;
+                border: 2px solid black;
+                border-radius: 50px;
+                cursor: pointer;
+            }
+            input[type="button"]:hover {
+                cursor: pointer;
+                background-color: black;
+                color: white;
+                transition: 0.15s;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="hms">HOSTEL MANAGEMENT SYSTEM</p>
+        <div>
+            <a href="{{ url_for('student_login_page')}}"><input type="button" id="student_login" value="Student"></a>
+            <a href="{{ url_for('admin_login_page')}}"><input type="button" id="admin_login" value="Admin"></a>
+            <a href="{{ url_for('warden_login_page')}}"><input type="button" id="warden_login" value="Warden"></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Warden Registration</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='SignUp.css') }}">
+    </head>
+    <body>
+        <h1>Warden Registration</h1>
+        <form action="{{ url_for('register_warden') }}" method="post" autocomplete="off">
+            <table>
+                <th>Warden Details</th>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="select_gender">Gender:</label></td>
+                    <td>
+                        <input list="gender" name="select_gender" id="select_gender">
+                        <datalist id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </datalist>    
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phno">Phone Number:</label></td>
+                    <td><input type="tel" id="phno" name="phno" required></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="number" id="age" name="age" required></td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr id="sx">
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="4" cols="30" required></textarea></td>
+                </tr>
+                <th>Hostel Details</th>
+                <tr>
+                    <td><label for="warden_id">Warden ID:</label></td>
+                    <td><input type="text" id="warden_id" name="warden_id" placeholder="Enter your warden ID" required></td>
+                </tr>
+                    <td><label for="salary">Salary:</label></td>
+                    <td><input type="number" id="salary" name="salary" required></td>
+                </tr>
+                <tr>
+                    <td><label for="hostel_name">Assigned Hostel:</label></td>
+                    <td>
+                        <input list="hostels" name="hostel_name" id="hostel_name" placeholder="Select your hostel" required>
+                        <datalist id="hostels">
+                            <option value="Freshers Block">Freshers Block</option>
+                            <option value="Aryabatta Block">Aryabatta Block</option>
+                            <option value="Ratan Tata Block">Ratan Tata Block</option>
+                            <option value="MSR Gowramma">MSR Gowramma</option>
+                        </datalist>
+                    </td>
+                </tr>
+                <th>Account Details</th>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username" placeholder="Set Username"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="Set Password" required></td>
+                </tr>
+            </table>
+            <input type="reset">
+            <input type="submit" value="Register">
+        </form>    
+    </body>
+</html>

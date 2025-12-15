@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update Warden Salary</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='SignUp.css') }}">
+    </head>
+    <body>
+        <h1>Update Warden Salary</h1>
+        <form action="{{ url_for('perform_warden_salary_update') }}" method="post" autocomplete="off">
+            <table>
+                <tr>
+                    <td><label for="warden_id">Warden ID:</label></td>
+                    <td><input type="text" id="warden_id" name="warden_id" required onblur="fetchWardenDetails()"></td>
+                </tr>
+                <tr>
+                    <td><label for="warden_name">Warden Name:</label></td>
+                    <td><input type="text" id="warden_name" name="warden_name" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="current_salary">Current Salary:</label></td>
+                    <td><input type="number" id="current_salary" name="current_salary" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="new_salary">New Salary:</label></td>
+                    <td><input type="number" id="new_salary" name="new_salary" required></td>
+                </tr>
+            </table>
+            
+            <br>
+            <input type="submit" value="Update Salary" style="width: 150px;">
+            <input type="reset" value="Reset">
+            <br>
+        </form>
+
+        <script>
+            function fetchWardenDetails() {
+                var wardenIdInput = document.getElementById('warden_id').value;
+                
+                // Only run if the user actually typed something
+                if(wardenIdInput) {
+                    // Call the Python route '/get_warden_details'
+                    fetch('/get_warden_details?warden_id=' + wardenIdInput)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert("Warden ID not found!");
+                            document.getElementById('warden_name').value = "";
+                            document.getElementById('current_salary').value = "";
+                        } else {
+                            // Fill the boxes with the data from Python
+                            document.getElementById('warden_name').value = data.name;
+                            document.getElementById('current_salary').value = data.salary;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            }
+        </script>
+    </body>
+</html>

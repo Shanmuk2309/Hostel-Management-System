@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outpass Requests - Warden Panel</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f7ff; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2f4f75; }
+        table { border-collapse: collapse; width: 95%; margin: 20px auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #d6d6d6; padding: 12px; text-align: center; }
+        th { background-color: #2f4f75; color: white; }
+        button { padding: 8px 15px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .approve { background: #0fb60f; color: white; }
+        .reject { background: #d32222; color: white; }
+        .approve:hover { background: #0d8f0d; }
+        .reject:hover { background: #b51d1d; }
+        .back-btn { display: block; width: 150px; margin: 0 auto; background-color: #555; color: white; text-align: center; text-decoration: none; padding: 10px; border-radius: 5px;}
+    </style>
+</head>
+
+<body>
+
+    <h1>Outpass Approval Panel</h1>
+
+    <table>
+        <tr>
+            <th>Req ID</th>
+            <th>Student ID</th>
+            <th>Name</th> <th>Room</th>
+            <th>Reason</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% if requests %}
+            {% for item in requests %}
+            <tr>
+                <td>{{ item.Outpass_id }}</td>
+                <td>{{ item.Student_id }}</td>
+                <td>{{ item.Student_name }}</td>
+                <td>{{ item.room_no }}</td>
+                <td>{{ item.reason }}</td>
+                <td>{{ item.from_date }}</td>
+                <td>{{ item.to_date }}</td>
+                <td>
+                    <form action="{{ url_for('update_outpass_status') }}" method="post" style="display:inline;">
+                        <input type="hidden" name="outpass_id" value="{{ item.Outpass_id }}">
+                        <input type="hidden" name="action" value="approve">
+                        <button class="approve" type="submit">Approve</button>
+                    </form>
+
+                    <form action="{{ url_for('update_outpass_status') }}" method="post" style="display:inline;">
+                        <input type="hidden" name="outpass_id" value="{{ item.Outpass_id }}">
+                        <input type="hidden" name="action" value="reject">
+                        <button class="reject" type="submit">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="8">No pending outpass requests found for your hostel.</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('warden_home') }}" class="back-btn">Back to Home</a>
+
+</body>
+</html>

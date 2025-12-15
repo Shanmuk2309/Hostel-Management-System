@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Warden Home Page</title>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='StudentPage.css') }}">
+    </head>
+    <body>
+        <span class = "welcome-text">WELCOME, {{warden_name}}!</span>
+        <div class = "welcome">
+            <div>
+                <p>Name: {{warden_name}} </p>
+                <p>ID: {{warden_id}}</p>
+            </div>
+            <p><img>IMAGE</p>
+        </div>
+        <div class = "utility-buttons">
+            <a href="{{ url_for('outpass_approval_page') }}"><button>Outpass Approval</button></a>
+            <a href="{{ url_for('room_change_approval_page') }}"><button style = "width: 250px;">Room Change Request Approval</button></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Home Page</title>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='StudentPage.css')}}">
+    </head>
+    <body>
+        <span class = "welcome-text">WELCOME, {{ admin_name }}!</span>
+        <div class = "welcome">
+            <div style = "height: 200px;">
+                <p>Name: {{ admin_name }}</p>
+            </div>
+            <p><img>IMAGE</p>
+        </div>
+        <div class = "utility-buttons">
+            <a href="{{ url_for('student_signup_page') }}"><button>Add Student</button></a>
+            <a href="{{ url_for('warden_signup_page') }}"><button>Add Warden</button></a>
+            <a href="{{ url_for('update_hostel_page') }}"><button style = "width: 200px">Update Hostel Capacity</button></a>
+            <a href="{{ url_for('update_warden_salary_page') }}"><button>Update Warden Salary</button></a>
+        </div>
+    </body>
+</html>

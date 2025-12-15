@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Generate Outpass</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='SignUp.css')}}">
+    </head>
+    <body>
+        <h1>Out Pass</h1>
+        <form action="{{ url_for('submit_outpass') }}" method="post" autocomplete="off">
+            <table>
+                <tr>
+                    <td><label for="studentId">Student ID:</label></td>
+                    <td><input type="text" id="studentId" name="studentId" value="{{ student.Student_id }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="studentName">Student Name:</label></td>
+                    <td><input type="text" id="studentName" name="studentName" value="{{ student.Student_name }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="hostelName">Hostel Name:</label></td>
+                    <td><input type="text" id="hostelName" name="hostel" value="{{ student.Hostel_name }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="roomNumber">Room Number:</label></td>
+                    <td><input type="text" id="roomNumber" name="roomNumber" value="{{ student.Room_no }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="reason">Reason for Out Pass:</label></td>
+                    <td><input type="text" id="reason" name="reason" required></td>
+                </tr>
+                <tr>
+                    <td><label for="fromDate">From Date:</label></td>
+                    <td><input type="date" id="fromDate" name="fromDate" required></td>
+                </tr>
+                <tr>
+                    <td><label for="toDate">To Date:</label></td>
+                    <td><input type="date" id="toDate" name="toDate" required></td>
+                </tr>
+            </table>
+            <input type="submit" value="Generate Out Pass" style="width: 200px;">
+        </form>
+    </body>
+</html>
